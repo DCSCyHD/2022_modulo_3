@@ -19,7 +19,7 @@ Revisaremos conceptos fundamentales para la compresión de los modelos parte de 
 # Contenidos y materiales
 ## Clase 1: Intro, tipos de modelos, trade-offs
 
-- [Slides - pdf](/clase1/teorico1.pdf)
+- [Slides - pdf](/clase1/teorico1.pptx)
 - [P1-A](/clase1/notebooks/P1a.nb.html)
 - [P1-B](/clase1/notebooks/P1b.nb.html)
 - [P1-A Notebooks](/clase1/notebooks/P1a.Rmd)
