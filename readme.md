@@ -79,5 +79,5 @@ Pueden descargarse la totalidad de los materiales del repositorio para trabajar 
 
 # Bibliografía y sitios de consulta
 
-- Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. An Introduction to Statistical Learning : with Applications in R. New York :Springer, 2021.
+- Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. An Introduction to Statistical Learning : with Applications in R. New York :Springer, 2021. https://hastie.su.domains/ISLR2/ISLRv2_website.pdf
 
