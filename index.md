@@ -1,5 +1,5 @@
 ![](/DCSCyHD/modulo_3/docs/assets/images/logo-factor-data-solo.jpg)
-
+<img src="DCSCyHD/modulo_3/docs/assets/images/logo-factor-data-solo.jpg" alt="hi" class="inline"/>
 # Introducción al modelado de datos
 
 ## Docentes
