@@ -1,4 +1,4 @@
-![](/DCSCyHD/modulo_3/assets/images/logo.png)
+![](/DCSCyHD/modulo_3/assets/images/logo-factor-data-solo.jpg)
 
 # Introducción al modelado de datos
 
