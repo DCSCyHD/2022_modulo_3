@@ -1,5 +1,5 @@
-![](/imgs/logo-factor-data-solo.jpg)
-
+![](/DCSCyHD/img/Download.png)
+![Book logo](/least-github-pages/assets/logo.png)
 # Introducción al modelado de datos
 
 ## Docentes
