@@ -10,7 +10,7 @@ El aprendizaje estadístico se refiere a un amplio set de herramientas para ente
 
 <em>An Introduction to Statistical Learning with applications in R (2017)</em>
 
-Revisaremos conceptos fundamentales para la compresión de los modelos parte de este curso, a continuación, les compartimos la estructura de las clases y los contenidos necesarios para las mismas.
+Revisaremos conceptos fundamentales para la compresión de los modelos parte de este curso. A continuación les compartimos la estructura de las clases y los contenidos necesarios para las mismas.
 
 
 
