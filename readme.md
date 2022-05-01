@@ -7,6 +7,7 @@
 
 # Presentación
 El aprendizaje estadístico se refiere a un amplio set de herramientas para entender a los datos. Estas herramientas pueden ser clasificadas entre supervisadas y no supervisadas. A grandes rasgos, el aprendizaje estadístico supervisado requiere construir un modelo estadístico para predecir o estimar una salida o ‘output’ basada en una o muchas entradas o ‘inputs’. Problemas de esta naturaleza ocurre en campos tan diversos como los negocios, la medicina, la astrofísica y la política pública. Con el aprendizaje estadístico no supervisado, existen entradas o ‘inputs’ pero no así un ‘output’ supervisado; sin embargo, podemos aprender relaciones de esos datos y la estructura de esta. 
+
 <em>An Introduction to Statistical Learning with applications in R (2017</em>
 
 Revisaremos conceptos fundamentales para la compresión de los modelos parte de este curso, a continuación, les compartimos la estructura de las clases y los contenidos necesarios para las mismas.
