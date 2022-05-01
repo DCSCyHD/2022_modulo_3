@@ -1,5 +1,5 @@
-![](/DCSCyHD/img/Download.png)
-![Book logo](/least-github-pages/assets/logo.png)
+![](/img/Download.png)
+
 # Introducción al modelado de datos
 
 ## Docentes
