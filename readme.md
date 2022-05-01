@@ -31,10 +31,10 @@ Pueden descargarse la totalidad de los materiales del repositorio para trabajar 
 ## Clase 2: Regresión lineal simple, múltiple y KNN
 
 - [Slides - pdf](/clase2/teorico2.pdf)
-- [P1-A](/clase2/notebooks/P2a.nb.html)
-- [P1-B](/clase2/notebooks/P2b.nb.html)
-- [P1-A Notebooks](/clase2/notebooks/P2a.Rmd)
-- [P1-B Notebooks](/clase2/notebooks/P2b.Rmd)
+- [P2-A](/clase2/notebooks/P2a.nb.html)
+- [P2-B](/clase2/notebooks/P2b.nb.html)
+- [P2-A Notebooks](/clase2/notebooks/P2a.Rmd)
+- [P2-B Notebooks](/clase2/notebooks/P2b.Rmd)
 
 Pueden descargarse la totalidad de los materiales del repositorio para trabajar en un único archivo .zip
 
@@ -44,10 +44,10 @@ Pueden descargarse la totalidad de los materiales del repositorio para trabajar 
 ## Clase 3: Clasificación: regresión logística, LDA, KNN
 
 - [Slides - pdf](/clase3/teorico3.pdf)
-- [P1-A](/clase3/notebooks/P3a.nb.html)
-- [P1-B](/clase3/notebooks/P3b.nb.html)
-- [P1-A Notebooks](/clase3/notebooks/P3a.Rmd)
-- [P1-B Notebooks](/clase3/notebooks/P3b.Rmd)
+- [P3-A](/clase3/notebooks/P3a.nb.html)
+- [P3-B](/clase3/notebooks/P3b.nb.html)
+- [P3-A Notebooks](/clase3/notebooks/P3a.Rmd)
+- [P3-B Notebooks](/clase3/notebooks/P3b.Rmd)
 
 Pueden descargarse la totalidad de los materiales del repositorio para trabajar en un único archivo .zip
 
@@ -56,10 +56,10 @@ Pueden descargarse la totalidad de los materiales del repositorio para trabajar 
 ## Clase 4: Cross-validation
 
 - [Slides - pdf](/clase4/teorico4.pdf)
-- [P1-A](/clase4/notebooks/P4a.nb.html)
-- [P1-B](/clase4/notebooks/P4b.nb.html)
-- [P1-A Notebooks](/clase4/notebooks/P4a.Rmd)
-- [P1-B Notebooks](/clase4/notebooks/P4b.Rmd)
+- [P4-A](/clase4/notebooks/P4a.nb.html)
+- [P4-B](/clase4/notebooks/P4b.nb.html)
+- [P4-A Notebooks](/clase4/notebooks/P4a.Rmd)
+- [P4-B Notebooks](/clase4/notebooks/P4b.Rmd)
 
 [![](imgs/Download.png)](clase4.zip)
 
@@ -67,10 +67,10 @@ Pueden descargarse la totalidad de los materiales del repositorio para trabajar 
 ## Clase 5. Subset selection, Lasso y Ridge
 
 - [Slides - pdf](/clase5/teorico5.pdf)
-- [P1-A](/clase5/notebooks/P5a.nb.html)
-- [P1-B](/clase5/notebooks/P5b.nb.html)
-- [P1-A Notebooks](/clase5/notebooks/P5a.Rmd)
-- [P1-B Notebooks](/clase5/notebooks/P5b.Rmd)
+- [P5-A](/clase5/notebooks/P5a.nb.html)
+- [P5-B](/clase5/notebooks/P5b.nb.html)
+- [P5-A Notebooks](/clase5/notebooks/P5a.Rmd)
+- [P5-B Notebooks](/clase5/notebooks/P5b.Rmd)
 
 [![](imgs/Download.png)](clase5.zip)
 
