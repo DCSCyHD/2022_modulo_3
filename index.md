@@ -1,37 +1,85 @@
-## Welcome to GitHub Pages
+![](/imgs/logo-factor-data-solo.jpg)
 
-You can use the [editor on GitHub](https://github.com/DCSCyHD/modulo_3/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+# Introducción al modelado de datos
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Docentes
 
-### Markdown
+- [Martín Schuster]()
+- [Tomás Maguire]()
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+# Presentación
+El aprendizaje estadístico se refiere a un amplio set de herramientas para entender a los datos. Estas herramientas pueden ser clasificadas entre supervisadas y no supervisadas. A grandes rasgos, el aprendizaje estadístico supervisado requiere construir un modelo estadístico para predecir o estimar una salida o ‘output’ basada en una o muchas entradas o ‘inputs’. Problemas de esta naturaleza ocurre en campos tan diversos como los negocios, la medicina, la astrofísica y la política pública. Con el aprendizaje estadístico no supervisado, existen entradas o ‘inputs’ pero no así un ‘output’ supervisado; sin embargo, podemos aprender relaciones de esos datos y la estructura de esta. 
 
-```markdown
-Syntax highlighted code block
+<em>An Introduction to Statistical Learning with applications in R (2017)</em>
 
-# Header 1
-## Header 2
-### Header 3
+Revisaremos conceptos fundamentales para la compresión de los modelos parte de este curso. A continuación les compartimos la estructura de las clases y los contenidos necesarios para las mismas.
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
+# Contenidos y materiales
+## Clase 1: Intro, tipos de modelos, trade-offs
 
-[Link](url) and ![Image](src)
-```
+- [Slides - pdf](/clase1/teorico1.pptx)
+- [P1-A](/clase1/notebooks/P1a.nb.html)
+- [P1-B](/clase1/notebooks/P1b.nb.html)
+- [P1-A Notebooks](/clase1/notebooks/P1a.Rmd)
+- [P1-B Notebooks](/clase1/notebooks/P1b.Rmd)
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+Pueden descargarse la totalidad de los materiales del repositorio para trabajar en un único archivo .zip
 
-### Jekyll Themes
+[![](imgs/Download.png)](clase1.zip)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/DCSCyHD/modulo_3/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
+## Clase 2: Regresión lineal simple, múltiple y KNN
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+- [Slides - pdf](/clase2/teorico2.pptx)
+- [P2-A](/clase2/notebooks/P2a.nb.html)
+- [P2-B](/clase2/notebooks/P2b.nb.html)
+- [P2-A Notebooks](/clase2/notebooks/P2a.Rmd)
+- [P2-B Notebooks](/clase2/notebooks/P2b.Rmd)
+
+Pueden descargarse la totalidad de los materiales del repositorio para trabajar en un único archivo .zip
+
+[![](imgs/Download.png)](clase2.zip)
+
+
+## Clase 3: Clasificación: regresión logística, LDA, KNN
+
+- [Slides - pdf](/clase3/teorico3.pptx)
+- [P3-A](/clase3/notebooks/P3a.nb.html)
+- [P3-B](/clase3/notebooks/P3b.nb.html)
+- [P3-A Notebooks](/clase3/notebooks/P3a.Rmd)
+- [P3-B Notebooks](/clase3/notebooks/P3b.Rmd)
+
+Pueden descargarse la totalidad de los materiales del repositorio para trabajar en un único archivo .zip
+
+[![](imgs/Download.png)](clase3.zip)
+
+## Clase 4: Cross-validation
+
+- [Slides - pdf](/clase4/teorico4.pptx)
+- [P4-A](/clase4/notebooks/P4a.nb.html)
+- [P4-B](/clase4/notebooks/P4b.nb.html)
+- [P4-A Notebooks](/clase4/notebooks/P4a.Rmd)
+- [P4-B Notebooks](/clase4/notebooks/P4b.Rmd)
+
+[![](imgs/Download.png)](clase4.zip)
+
+
+## Clase 5. Subset selection, Lasso y Ridge
+
+- [Slides - pdf](/clase5/teorico5.pptx)
+- [P5-A](/clase5/notebooks/P5a.nb.html)
+- [P5-B](/clase5/notebooks/P5b.nb.html)
+- [P5-A Notebooks](/clase5/notebooks/P5a.Rmd)
+- [P5-B Notebooks](/clase5/notebooks/P5b.Rmd)
+
+[![](imgs/Download.png)](clase5.zip)
+
+
+
+
+# Bibliografía y sitios de consulta
+
+- Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. An Introduction to Statistical Learning : with Applications in R. New York :Springer, 2021. https://hastie.su.domains/ISLR2/ISLRv2_website.pdf
+
