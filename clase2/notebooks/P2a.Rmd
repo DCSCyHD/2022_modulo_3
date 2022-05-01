@@ -1,0 +1,159 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Regresión Lineal
+## Práctico 2a
+Diploma Universitario en Ciencias Sociales Computacionales y Humanidades Digitales (UNSAM).
+
+Módulo 3: Introducción al modelado de datos.
+
+## Librerías
+
+Vamos a cargar la librería **MASS** y la librería **ISLR**. Algunas librerías viene preinstaladas, otras precisamos descargarlas e instalarlas, como la **ISLR**:
+
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+La librería **MASS** contiene el set de datos **Boston**, el cual registra **medv** (median house value por sus iniciales, el valor promedio de una casa) para 506 barrios en las cercanías de Boston. Buscaremos precedir **medv** usando 13 predictores como por ejemplo **rm** (número promedio de habitaciones por casa), **age** (años promedio de antiguedad de las casas) y **lstat** (porcentaje de hogares con un estatus socioeconómico bajo).
+
+Explora con **fix()** el dataset y los nombres de las variables con **names()**
+
+```{r}
+
+```
+Usá **lm()** para ajustar un modelo simple de regresión lineal, usando **medv** como la respuesta y **lstat** como el predictor. La sintáxis básica es **lm(y∼x, data)** donde **y** es la variable dependiente, **x** el predictor y **data** el set de datos donde residen las variables.
+
+```{r}
+
+```
+
+Si te da error ingresando las variables, esto es porque debemos indicarle a *R* donde buscar las variables. Lo podemos lograr con **attach()**.
+
+```{r}
+
+```
+
+Indagá **lm.fit**, usá también el modelo generado dentro de la función **summary()**
+
+```{r}
+
+```
+
+```{r}
+
+```
+Usá **names()** pasando como argumento el modelo generado para saber que otras piezas de información almacena el objeto. También accede a los coeficientes usando **coef()**.
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+Para obtener intervalos de confianza para los coeficientes estimados, podemos usar la función **confint()**
+
+```{r}
+
+```
+
+Usá **predict()** para obtener intervalos de confianza e intervalos de predicción para la predicción de **medv** dado un valor de **lstat**.
+
+¿Qué se observa respecto a los intervalos de confianza y de predicción para **lstat** con un valor de 10?
+
+```{r}
+
+```
+```{r}
+
+```
+Ploteá **medv** y **lstat** usando **plot()** y **abline()**.
+
+```{r}
+
+```
+
+Hay indicios de no-linealidad entre **medv** y **lstat**, lo abordarmos más tarde en éste laboratorio.
+
+Probá usando los argumentos **lwd** y **col** en **abline()** y **col** y **pch** en **plot()**.
+
+```{r}
+
+```
+
+Usá **plot()** con **lm.fit()**.
+
+```{r}
+
+```
+Usá **plot()** junto con **residuals()** y **rstudent()** para computar y plotear los residuos y los residuos Student de la regresión lineal.
+
+```{r}
+
+```
+
+```{r}
+
+```
+## Regresión lineal múltiple
+
+Usando **lm()** calculá un modelo lineal usando las variables **lstat** + **age**. De manera que tengamos 2 predictores y una variable dependiente **medv**.
+
+```{r}
+
+```
+
+Ahora, generá un modelo usando todos los predictores disponibles, teniendo a **medv** como variable dependiente.
+
+```{r}
+
+```
+Usando la función **vif()** del paquete **car** podemos calcular el factor de inflación de la varianza.
+
+```{r}
+
+```
+
+```{r}
+
+```
+## Términos de interacción
+
+Imprimí en la consola el resultado de pasarle a **summary()** un modelo lineal que tenga como variable dependiente a **medv** y las variables **age**, **lstat** y el término de interacción de **lstat X age** como predictores.
+
+```{r}
+
+```
+
+## Predictores cualitativos
+
+Vamos a utiliar el dataset **Carseats** de la libería **ISLR**. Intentaremos predecir **Sales** (ventas de sillas para niñas y niños) en 400 locaciones basadas en un número determinado de predictores.
+
+```{r}
+
+```
+
+**Shelvloc** es un predictor cualitativo que hace referencia a la calidad (buena, mediana y mala) de la ubicación de un asiento de automóvil en un aparador de una tienda determinada.
+
+Dada una variable cualitativa como **Shelvloc**, *R* genera variables ficticias (*dummy variables*) automáticamente.
+
+Vamos a realizar una regresión lineal múltiple que incluya algunos términos de interacción.
+
+```{r}
+
+```
+La función **contrasts()** devuelve el código de la *dummy variable* que *R* generó.
+
+```{r}
+
+```
+

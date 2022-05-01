@@ -1,0 +1,179 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Métodos de remuestreo
+## Práctico 4a
+Diploma Universitario en Ciencias Sociales Computacionales y Humanidades Digitales (UNSAM).
+
+Módulo 3: Introducción al modelado de datos.
+
+#### 1) Vamos a revisar conceptos asociados a la validación curzada de tipo *k-fold*.
+
+a) Explique cómo se implementa *k-fold cross-validation*
+
+b) Explique cuáles son las ventajas y desventajas de usar validación cruzada de tipo *k-fold* relativas a:
+
+i. El abordaje de validación (*validation set approach*).
+ii El abordaje **LOOCV** (*leave-one-out cross validation*).
+
+#### 2) En la clase 3 usamos una regresión logística para predecir las probabilidades de **default** usando **income** y **balance** en el set de datos **Default**. Vamos a estimar el error del set de testeo de esa misma regresión usando los abordajes de validación. No olvides setear la **seed** antes de generar el análisis.
+
+a) Modelá una regresión logística usando **income** y **balance** para predecir **default**
+
+b) Usando el abordaje de validación, estimá el error de testeo del modelo. Seguí los pasos:
+
+i. Hacé un split de train y test.
+ii. Modelá la regresión logística usando solo las observaciones del set de entrenamiento.
+iii. Computá el error del set de validación, el cual es la fracción de observaciones mal clasificadas del set de validación.
+
+c) Repetí el proceso en b) tres veces, usando tres split diferentes de test y train. Comentá los resultados.
+
+d) Ahora considerá un modelo de regresión logística que predice la probabilidad de **default** usando **income**,**balance** y una variable *dummy* para **student**. Estimá el error del set de testeo usando el abordaje de validación. Comentá si la inclusión de la variable *dummy* para **student** mejora o empeora el desempeño del modelo.
+
+#### 3) Realizaremos una validación cruzada en un set de datos simulados.
+
+a) Generá el siguiente set de datos:
+
+```{r}
+set.seed(1)
+x=rnorm(100)
+y=x-2*x^2+rnorm(100)
+```
+
+¿Cual es el valor para *n* y para *p*? Escribí el modelo usado para generar los datos en forma de ecuación.
+
+b) Creá un scatterplot de X contra Y. Comentá tus hallazgos.
+
+c) Seteá una semilla aleatoria (*random seed*) y computá errores LOOCV producto de ajustar los siguientes cuatro modelos por mínimos cuadrados (*least squares*):
+
+
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>Y</mi>
+  <mo>=</mo>
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mn>0</mn>
+  </msub>
+  <mo>+</mo>
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mn>1</mn>
+  </msub>
+  <mi>X</mi>
+  <mo>+</mo>
+  <mi>&#x03F5;<!-- ϵ --></mi>
+</math>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>Y</mi>
+  <mo>=</mo>
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mn>0</mn>
+  </msub>
+  <mo>+</mo>
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mn>1</mn>
+  </msub>
+  <mi>X</mi>
+  <mo>+</mo>
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mn>2</mn>
+  </msub>
+  <msup>
+    <mi>X</mi>
+    <mn>2</mn>
+  </msup>
+  <mo>+</mo>
+  <mi>&#x03F5;<!-- ϵ --></mi>
+</math>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>Y</mi>
+  <mo>=</mo>
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mn>0</mn>
+  </msub>
+  <mo>+</mo>
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mn>1</mn>
+  </msub>
+  <mi>X</mi>
+  <mo>+</mo>
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mn>2</mn>
+  </msub>
+  <msup>
+    <mi>X</mi>
+    <mn>2</mn>
+  </msup>
+  <mo>+</mo>
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mn>3</mn>
+  </msub>
+  <msup>
+    <mi>X</mi>
+    <mn>3</mn>
+  </msup>
+  <mo>+</mo>
+  <mi>&#x03F5;<!-- ϵ --></mi>
+</math>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>Y</mi>
+  <mo>=</mo>
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mn>0</mn>
+  </msub>
+  <mo>+</mo>
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mn>1</mn>
+  </msub>
+  <mi>X</mi>
+  <mo>+</mo>
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mn>2</mn>
+  </msub>
+  <msup>
+    <mi>X</mi>
+    <mn>2</mn>
+  </msup>
+  <mo>+</mo>
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mn>3</mn>
+  </msub>
+  <msup>
+    <mi>X</mi>
+    <mn>3</mn>
+  </msup>
+  <mo>+</mo>
+  <msub>
+    <mi>&#x03B2;<!-- β --></mi>
+    <mn>4</mn>
+  </msub>
+  <msup>
+    <mi>X</mi>
+    <mn>4</mn>
+  </msup>
+  <mo>+</mo>
+  <mi>&#x03F5;<!-- ϵ --></mi>
+</math>
+
+En este punto puede ser útil la función **data.frame()** para crear un solo set de datos que contenga tanto X como Y.
+
+d) Repetí c) usando otra semilla aleatoria. Comentá tus hallazgos.¿Son los mismos resultados que en el punto c)? Explicá tu respuesta.
+
+e) Cual de los modelos en c) tiene el error LOOCV mas bajo? Explicá tu respuesta. ¿Es el resultado que esperabas?

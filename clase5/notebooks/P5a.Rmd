@@ -1,0 +1,137 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Selección del mejor subset
+## Práctico 5a
+Diploma Universitario en Ciencias Sociales Computacionales y Humanidades Digitales (UNSAM).
+
+Módulo 3: Introducción al modelado de datos.
+
+
+
+## Ridge Regression
+
+Vamos a usar el dataset **Hitters** parte de la librería **ISLR**. Buscamos predecir el salario de un jugador de béisbol en base a diferentes variables estadísticas vinculadas a su performance durante el año previo.
+
+Garantizá eliminar los valores perdidos en la variable **Salary**.
+```{r}
+install.packages("ISLR")
+```
+
+
+```{r}
+library(ISLR)
+dim(Hitters)
+Hitters=na.omit(Hitters)
+```
+**glmnet()** precisa que le pasemos como argumento una matriz **x** y un vector **y**. Vamos a realizar una regresión ridge para predecir **Salary** en el set de datos **Hitters**. 
+
+```{r}
+x=model.matrix(Salary∼.,Hitters )[,-1]
+y=Hitters$Salary
+```
+
+Usamos la función **glmnet()** con el argumento **alpha=0** para ajustar una regresión ridge.
+
+```{r}
+install.packages("glmnet", dependencies=TRUE)
+library(glmnet)
+```
+
+Creamos valores de lambda.
+
+```{r}
+grid=10^seq(10,-2,length=100)
+```
+
+Dividimos entre train y test.
+
+```{r}
+set.seed(2)
+train=sample(1:nrow(x),nrow(x)/2)
+test=(-train)
+y.test=y[test]
+```
+
+Fiteamos ridge y examinamos el valor en index número 60, que sería lambda = 705.
+
+
+```{r}
+ridge.mod=glmnet(x[train,],y[train],alpha=0,lambda=grid)
+ridge.mod$lambda[60]
+```
+
+```{r}
+coef(ridge.mod)[,60]
+```
+
+
+Calculamos ridge para lambda = 4.
+
+```{r}
+ridge.mod=glmnet(x[train,],y[train],alpha=0,lambda=grid)
+ridge.pred=predict(ridge.mod,s=4,newx=x[test,])
+mean((ridge.pred-y.test)^2)
+```
+
+Calculamos la regresión solo utilizando OLS.
+
+```{r}
+ridge.pred=predict(ridge.mod,s=0,newx=x[test,])
+mean((ridge.pred-y.test)^2)
+```
+```{r}
+set.seed(5)
+cv.out=cv.glmnet(x[train,],y[train],alpha=0)
+plot(cv.out)
+bestlam=cv.out$lambda.min
+bestlam
+```
+
+El valor de lambda que presenta el error de validación cruzada más bajo es 243, ahora vamos a calcular el MSE asociado a ese valor de lambda.
+
+```{r}
+ridge.pred=predict(ridge.mod,s=bestlam,newx=x[test,])
+mean((ridge.pred-y.test)^2)
+```
+Calculamos nuestra regresión ridge con el mejor valor de lambda y vemos los coeficientes.
+
+```{r}
+out=glmnet(x,y,alpha=0)
+predict(out,type="coefficients",s=bestlam)[1:20,]
+```
+
+Ninguno de los coeficientes es cero, ridge regression NO selecciona variables!
+
+## Lasso
+
+Probemos ahora si un modelo lasso nos puede entregar mejores resultados. Debemos especificar **alpha=1** en **glmnet()** para indicar el uso de lasso.
+
+```{r}
+lasso.mod=glmnet(x[train,],y[train],alpha=1,lambda=grid)
+plot(lasso.mod)
+```
+
+Podemos ver en el plot que depende de la selección de parámetros de tuneo, algunos coeficientes seran iguales a cero. Ahora generemos una validación cruzada y computemos el error de test asociado.
+
+```{r}
+set.seed(8)
+cv.out=cv.glmnet(x[train,],y[train],alpha=1)
+plot(cv.out)
+bestlam=cv.out$lambda.min
+lasso.pred=predict(lasso.mod,s=bestlam,newx=x[test,])
+mean((lasso.pred-y.test)^2)
+```
+Esto es bastante mas bajo el error de test MSE del modelo nulo y de mínimos cuadrados, y bastante similar al MSE del test de la regresión ridge con λ seleccionado por validación cruzada. Sin embargo lasso tiene una ventaja sustancial respecto a la regresión ridge dado que los coeficientes estimados son en su mayoría cercanos a 0 (13 coeficientes son exactamente 0), por lo que el modelo lasso con λ definido por validación cruzada contiene solo siete variables.
+
+
+```{r}
+out=glmnet(x,y,alpha=1,lambda=grid)
+lasso.coef=predict(out,type="coefficients",s=bestlam)[1:20,]
+lasso.coef
+```
+```{r}
+lasso.coef[lasso.coef!=0]
+```

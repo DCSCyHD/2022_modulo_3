@@ -1,0 +1,162 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Regresión Lineal
+## Práctico 2b
+Diploma Universitario en Ciencias Sociales Computacionales y Humanidades Digitales (UNSAM).
+
+Módulo 3: Introducción al modelado de datos.
+
+
+**1)** Supongamos que tenemos un set de datos con 5 predictores:
+
+X1 = **GPA**
+X2 = **IQ**
+X3 = **Gender** (1 por *Female* 0 por *Male*)
+X4 = La interacción entre **GPA** e **IQ**
+x5 = La interacción entre **GPA** y **Gender**
+
+La variable de respuesta es el salario inicial luego de la graduación (en miles de dólares).
+
+Supongamos que usamos mínimos cuadrados para ajustar el modelo, y obtenemos:
+
+$\hat{\beta_0}$  = 50
+
+$\hat{\beta_1}$  = 20
+
+$\hat{\beta_2}$  = 0.07
+
+$\hat{\beta_3}$  = 35
+
+$\hat{\beta_4}$  = 0.01
+
+$\hat{\beta_5}$  = -10
+
+
+a) ¿Cual respuesta es correcta y por qué?
+
+i. Para un valor determinado de **IQ** y **GPA**, *Male* percibe en promedio un mayor ingreso.
+
+ii. Para un valor determinado de **IQ** y **GPA**, *Female* percibe en promedio un mayor ingreso.
+
+iii. Para un valor determinado de **IQ** y **GPA**, *Male* percibe un mayor ingreso que *Female* dado un valor de **GPA** suficientemente alto.
+
+iv. Para un valor determinado de **IQ** y **GPA**, *Female* percibe un mayor ingreso que *Male* dado un valor de **GPA** suficientemente alto.
+
+
+b) Predecir el salario de *Female* con un **IQ** de 110 y **GPA** igual a 4.0
+
+
+
+c) Verdadero o falso: Dado que el coeficiente de la interacción GPA/IQ es muy pequeño, hay poca evidencia que corrobore un efecto de interacción entre las variables. Justifique su respuesta.
+
+
+
+**2)** Vamos a usar el dataset **Auto**.
+
+a) Usando la función **lm()** realizar una regresión linear simple con **mpg** como la variable dependiente y **horsepower** como el predictor. Usá la función **summary()** para imprimir los resultados. Realizá comentarios respecto a los resultados, por ejemplo:
+
+i. ¿Hay alguna relación entre el predictor y la variable dependiente?
+
+```{r}
+
+```
+
+
+
+ii. ¿Que tan fuerte es la relación entre el predictor y la variable dependiente?
+
+
+
+iii. ¿La relación entre el predictor y la variable dependiente es positiva o negativa?
+
+
+
+```{r}
+
+```
+
+
+b) Ploteá la variable dependiente e independiente. Usá la función **abline()** para visualizar la regresión lineal de mínimos cuadrados.
+
+```{r}
+
+```
+
+
+c) Usá la función **plot()** para producir un diagnóstico de plots de la regresión por minimos cuadrados. Comentá sobre cualquier problema que veas con el gráfico generado.
+
+```{r}
+
+```
+
+
+**3)** Seguimos usando el dataset **Auto**, esta vez para generar regresiones lineales múltiples.
+
+a) Generá una matriz de **scatterplot** que incluya todas la variables en el dataset.
+
+```{r}
+
+```
+
+
+b) Computá la matriz de correlación entre las variables usando la función **cor()**. Precisarás excluir la variable **name** dado que es cualitativa.
+
+```{r}
+
+```
+
+
+c) Usando **lm()** generá una regresión lineal múltiple con **mpg** como la variable dependiente y todas las otras variables salvo **name** como variables independientes. Usá **summary()** para visualizar los resultados. Comentá respecto a los resultados, por ejemplo:
+
+i. ¿Hay alguna relación ente los predictores y la variable dependiente?
+
+```{r}
+
+```
+
+
+
+ii. ¿Qué predictores aparentan ser estadísticamente significativos en relación a la variable dependiente?
+
+
+
+iii. ¿Qué sugiere el coeficiente de la variable **year**?
+
+
+
+
+d) Usando **plot()** para realizar un diagnóstico de plots sobre la regresión lineal. Comentá cualquier problema que veas sobre la línea que mejor se ajusta. ¿Los plots sobre residuos sugieren algún outlier inusualmente grande? ¿Los *leverage plots* indentifican alguna observación con un *leverage* inusualmente alto?
+
+```{r}
+
+```
+
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+
+e) Usá los símbolos * y : para ajustar un modelo de regresión lineal con efectos de interacción. ¿Existe alguna interacción que podamos decir son significativas estadísticamente?
+
+```{r}
+
+
+```
+
+
+f) Probá diferentes transformaciones de las variables, como por ejempo calcular **log(*X*)**, la raíz cuadrada, o elevar al cuadrado. Comentá sobre tus hallazgos.
+
+```{r}
+
+```
+```{r}
+
+```

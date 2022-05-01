@@ -1,0 +1,158 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Selección del mejor subset
+## Práctico 5a
+Diploma Universitario en Ciencias Sociales Computacionales y Humanidades Digitales (UNSAM).
+
+Módulo 3: Introducción al modelado de datos.
+
+# Selección del mejor subset
+
+Vamos a usar la función **regsubsets()** parte de la librería **leaps** el cual ejecuta la selección del mejor subset identificando el mejor modelo que contenga un número determinado de predictores, donde 'mejor' es definido por el mejor valor **RSS**. La sintaxis es muy similar a la función **lm()**. La función **summary()** devuelve un output con el mejor set de variabls para cada tamaño de modelo.
+
+```{r}
+
+```
+
+
+```{r}
+
+```
+
+Un asterisco indica que la variable está incluida en el correspondiente modelo. En el output previo vemos que el mejor modelo de dos variables contiene **Hits** y **CRBI**. Por defecto **regsubsets()** solo devuelve resultados incorporando hasta 8 variables pero lo podemos extender usando el parámetro **nvmax**
+
+```{r}
+
+```
+
+
+La función **summary()** devuelve también **R2**, **RSS**, **Cp** y **BIC**. Podemos examinar estos coeficientes al intentar seleccionar el mejor modelo.
+
+```{r}
+
+```
+
+Por ejemplo, vemos que **R2** aumenta un 32% cuando se incluye una variable y 55% cuando se incorporan todas las variables. Como es de esperarse, **R2** aumenta monotónicamente mientras se incorporan más variables.
+
+```{r}
+
+```
+
+Al plotear **RSS**, **R2** ajustado, **Cp** y **BIC** para todos los modelos podemos decidir qué modelo seleccionar. Es importante remarcar que el parámetro **type=1** le indica a *R* conectar los puntos ploteados en una línea.
+
+```{r}
+
+```
+
+La función **points()** funciona como **plot()** excepto que plotea puntos en un plot que ya ha sido generado, en lugar de crear un plot nuevo. La función **wich.max()** puede ser usada para indentificar la ubicación del punto máximo de un vector. Vamos a plotear puntos rojos para indicar **R2**.
+
+```{r}
+
+```
+
+Lo mismo podemos hacer con **Cp** y **BIC** usando **wich.min()**.
+
+```{r}
+
+```
+
+
+La función **regsubsets()** tiene embebida una función **plot()** que puede ser usada para visualizar las mejores variables de acuerdo a un numero de predictores, rankeados según los coeficientes calculados previamente. Si querés saber más sobre la función, podes indagarla usando **?plot.regsubsets**.
+
+```{r}
+
+```
+
+La fila superior de cada plot contiene un cuadrado negro por cada variable seleccionada en función del modelo asociado con esa estadística. Por ejemplo, vemos que varios modelos comparten un **BIC** cercano a -150. Sin embargo, el modelo con el **BIC** más alto es el modelo de seis variables que sólo contiene **AtBat**, **Hits**, **Walks**, **CRBI**, **DivisionW** y **PutOuts**. Podemos usar **coef()** para ver los coeficientes estimados asociados para tal modelo.
+
+```{r}
+
+```
+
+## Forward y Backward Stepwise Selection
+
+Podemos realizar la selección de subset usando *forward o backward stepwise selection* usando el argumento **method="forward** y **method="backward"**.
+
+```{r}
+
+```
+
+Podemos indagar los resultados usando **coef()**.
+
+```{r}
+
+```
+Para estos datos, los resultados para el mejor modelo tomando en consideración 1 variable hasta las 6 variables son casi identicos para *best subset* y *forward stepwise*. Sin embargo, los resultados para los mejores modelos para 7 variables usando *backward stepwise* y *best subset* son diferentes.
+
+## Seleccionando modelos usando sets de validación o validación cruzada.
+
+Iniciamos dividiendo las observaciones entre el set de entrenamiento y el set de testeo. Creamos un vector random, **train**, de elementos iguales a **TRUE** si la observación se encuentra en el set de entrenamiento y **FALSE** si ocurre lo opuesto. El comando **!** causa que los **TRUE** switcheen a **FALSE** y viceversa. Para garantizar la replicabilidad también seteamos una semilla.
+
+```{r}
+
+```
+
+Aplicamos ahora **regsubsets()** al set de entrenamiento en función de selecciónar el mejor subset.
+
+```{r}
+
+```
+
+Ahora computamos el error para el set de validación para el mejor modelo correspondiente a los diferentes tamaños de modelo. Primero realizamos una matriz de modelos para el set de testeo.
+
+```{r}
+
+```
+
+La función **model.matrix()** se usa en muchos paquetes de regresión para contruir una "X" matriz de los datos. Ahora vamos a correr un loop para cada tamaño de **i**, extraemos los coeficientes de **regfit.best** para obtener el mejor tamaño de modelo, multiplicamos esos valores con las columnas apropiadas de la matriz de testeo para formar las predicciones, y luego compitamos el MSE del set de testeo.
+
+```{r}
+
+```
+
+Observamos que el mejor modelo para estos datos contiene 10 variables.
+
+```{r}
+
+```
+Esto es algo tedioso en parte porque no tenemos un método **predict()** para **regsubsets()**. Ya que vamos a usar la función nuevamente, podemos capturar los pasos previos y escribir nuestro propio método de predicción.
+
+```{r}
+
+```
+
+Nuestra función imita lo que hicimos previamente. La única parte compleja es cómo extraimos la fórmula usada en el llamado a **regsubsets()**. Debajo veremos como usamos esta función, cuando hagamos la validación cruzada o **cross-validation**.
+
+Finalmente hacemos la selección de subset con todo el dataset y seleccionamos  el mejor modelo de 10 variables. 
+
+```{r}
+
+```
+
+A continuación vamos a seleccionar el mejor modelo usando diferentes tamaños y validación cruzada. Vamos a usar 10 *k-folds*.
+
+```{r}
+
+```
+
+Generemos ahora una función con un *for loop* que realice la validación cruzada.
+
+```{r}
+
+```
+
+La función generada nos entrega una matriz de 10x19 cuyo cada elemento (*i*,*j*) corresponde al MSE test del *fold* *i* para el mejor modelo de *j* variables.
+
+```{r}
+
+```
+
+Vemos que la validación cruzada selecciona un modelo de 11 variables. A continuación seleccionamos el mejor subset de 11 variables.
+
+```{r}
+
+```
+

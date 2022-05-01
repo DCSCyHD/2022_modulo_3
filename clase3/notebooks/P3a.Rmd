@@ -1,0 +1,225 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Clasificación
+## Práctico 3a
+Diploma Universitario en Ciencias Sociales Computacionales y Humanidades Digitales (UNSAM).
+
+Módulo 3: Introducción al modelado de datos.
+
+## El set de datos 'Stock Market'
+
+Vamos a utilizar el dataset **Smarket**, el cual consiste en los retornos porcentuales del índice de acciones S&P 500 a lo largo de 1250 días, desde el inicio de 2001 hasta el 2005. Para cada fecha, tenemos registrado el retorno porcentual de cada uno de los 5 días previos (**Lag1**:**Lag5**), también está registrado el volumen (**Volume**) operado en el día previo, expresado en billones. **Today** contiene el retorno porcentual para la fecha en cuestión y **Direction** la dirección del mercado (si estuvo alcista o **Up** o bajista **Down**).
+
+```{r}
+install.packages("ISLR")
+```
+
+
+```{r}
+library(ISLR)
+names(Smarket)
+dim(Smarket)
+summary(Smarket)
+```
+```{r}
+pairs(Smarket)
+```
+
+
+
+Usemos **cor()** para generar una matriz que contenga la comparación de las correlaciones en los predictores del set de datos. Debemos dejar afuera **Direction** ya que es cualitativa.
+
+```{r}
+cor(Smarket[,-9])
+```
+
+Como se podría esperar, la correlación entre **Today** y las variables **Lag** son cercanas a cero. En otras palabras, parece ser que existe poca correlación entre los retornos del día y los de los días previos. La única correlación sustancial que podemos ver es entre **Year** y **Volume**, ploteando los datos podemos ver que **Volume** se incrementa con el tiempo. En otras palabras, el número promedio de transacciónes se incrementó entre 2001 y 2005.
+
+```{r}
+attach(Smarket)
+plot(Volume)
+
+```
+
+## Regresión logística
+
+Ajustemos un modelo de regresión logística buscando predecir **Direction** usando **Lag1** hasta **Lag5** y **Volume**. La función **glm()** ajusta *modelos lineales generalizados* por lo que debemos especificar **family=binomial** para indicarle a *R* que deseamos generar una regresión logística.
+
+```{r}
+glm.fits=glm(Direction∼Lag1+Lag2+Lag3+Lag4+Lag5+Volume,data=Smarket,family=binomial)
+summary(glm.fits)
+```
+Bajo P-value de Lag1. El coeficiente negativo de Lag 1 sugiere que si el mercado tuvo un retorno positivo el día anterior, entonces es menos probable que el mercado se sea alcista el día presente (variable **Today**).
+
+Sin embargo ese p-value es relativamente grande, por lo que no hay evidencia clara de una asociación real entre Lag1 y Dirección.
+
+
+Indaguemos sobre los resultados usando **coef()** y **summary()**
+
+```{r}
+coef(glm.fits)
+summary(glm.fits)$coef
+```
+```{r}
+glm.probs=predict(glm.fits,type="response")
+glm.probs[1:10]
+```
+
+```{r}
+contrasts(Direction)
+```
+Para hacer una predicción respecto a un mercado alcista o bajista, debemos convertir estas predicciones en etiquetas.
+
+```{r}
+glm.pred=rep("Down",1250)
+glm.pred[glm.probs>.5]="Up"
+```
+
+Creamos la matriz de confusión.
+
+```{r}
+table(glm.pred,Direction)
+```
+Predecimos de manera correcta 507 observaciones respecto a un mercado alcista y 145 un mercado bajista.
+
+
+```{r}
+(507+145) / 1250
+```
+El 52.2% de las veces la predicción fue correcta.Hay otra forma de acceder al mismo resultado.
+
+```{r}
+mean(glm.pred==Direction)
+```
+100% - 52.2% = 47.8% es el ratio de error de nuestro set de entrenamiento. Pero esto es algo que debemos evitar, ya que el testeo de nuestros debemos realizarlo con el set de test y no con el set de train.
+
+Ahora, generemos un nuevo modelo, pero usando de set de entrenamiento las observaciones que sucedieron previo al año 2005 y testeando contra las observaciones que sucedieron en 2005.
+
+Primero vamos a crear el set de train y de test.
+
+```{r}
+train=(Year<2005)
+Smarket.2005=Smarket[!train,]
+dim(Smarket.2005)
+Direction.2005=Direction[!train]
+```
+El objeto **train** es un vector de 1250 elementos, que corresponden a las observaciones de nuestro data set. Los elementos del vector que corresponden a observaciones ocurridas antes de 2005, son definidas como **TRUE**, mientras que las observaciones que ocurren en 2005 figuran como **FALSE**. **train** es un vector *booleano* que será de utilidad para generar un subset del set de datos original.
+El comando **Smarket[!train,]** seleccionará solo el subset de datos correspondiente a observaciones realizadas en 2005.
+
+Ahora vamos a modelizar una regresión logística usando el subset de datos que corresponden a los datos previos a 2005, usando el argumento **subset**.
+
+```{r}
+glm.fits=glm(Direction∼Lag1+Lag2+Lag3+Lag4+Lag5+Volume,data=Smarket,family=binomial,subset=train)
+```
+
+```{r}
+glm.probs=predict(glm.fits,Smarket.2005,type="response")
+```
+
+Finalmente computamos las predicciones para el año 2005 y los comparamos los movimientos reales del mercado para esa observación
+
+```{r}
+glm.pred=rep("Down",252)
+glm.pred[glm.probs>.5]="Up"
+table(glm.pred,Direction.2005)
+mean(glm.pred==Direction.2005)
+mean(glm.pred!=Direction.2005)
+```
+**!=** significa "no es igual a", por lo que estamos computando el ratio de error para set de prueba. Los resultados son un poco decepcionantes, el ratio es del 52%.
+Recordemos que en el modelo de regresión logística tenia **p-values** poco relevantes asociados a los predictores, y que el **p-value** más bajo era el de **Lag1**. Quizá si removemos las variables que parece no estan ayudando mucho a generar predicciones precisas ayude a aumentar la efectividad del modelo. Recordemos que, si usamos predictores que no tienen relación con la variable de respuesta, esto tiende a deteriorar el ratio de error del set de prueba (dado que los predictores pueden aumentar la varianza sin que eso se corresponda con un descenso en el sesgo), por lo que remover predictores innecesarios puede aumentar la efectividad de nuestro modelo.
+Usemos **Lag1** y **Lag2**, variables que parecen tener el poder predictivo más alto según el modelo que generamos inicialmente.
+
+```{r}
+glm.fits=glm(Direction∼Lag1+Lag2,data=Smarket,family =binomial,subset=train)
+glm.probs=predict(glm.fits,Smarket.2005,type="response")
+glm.pred=rep("Down",252)
+glm.pred[glm.probs >.5]="Up"
+table(glm.pred,Direction.2005)
+mean(glm.pred==Direction.2005)
+106/(106+76)
+```
+Los resultados son apenas un poco mejores, 56% de los movimientos diarios fueron correctamente estimados. Sin embargo, los días que han sido estimados como alcistas, el modelo acertó el 58% de las veces. Esto sugiere una estrategia de trading que recomienda comprar en los días en que el modelo predice un mercado alcista, y evitar comprar en días que sean estimados como bajistas.
+
+Finalmente vamos realizar predicciones sobre observaciones con valores determinados de **Lag1** y **Lag2**. En particular, queremos predecir **Direction** en días en los que **Lag1=1.2** y **Lag2=1.1** y otro caso en que **Lag1=1.5** y **Lag2=0.8**.
+
+```{r}
+predict(glm.fits,newdata=data.frame(Lag1=c(1.2,1.5),Lag2=c(1.1,-0.8)),type ="response")
+```
+
+
+## LDA (Linear Discriminan Analysis)
+
+Ajustemos un modelo LDA usando la libreria **MASS**. La función se llama **lda()**. Entrenemos el modelo, como en el caso anterior, con el set de datos de entrenamiento (observaciones previo a 2005).
+
+```{r}
+library(MASS)
+lda.fit=lda(Direction∼Lag1+Lag2,data=Smarket,subset=train)
+lda.fit
+```
+
+```{r}
+lda.pred=predict(lda.fit,Smarket.2005)
+names(lda.pred)
+```
+
+
+Realizá una matriz de confusión para evaluar cómo se desempeñó el modelo. Comparalo con la regresión logística. ¿Qué podemos decir?
+
+```{r}
+lda.class=lda.pred$class
+table(lda.class,Direction.2005)
+mean(lda.class==Direction.2005)
+mean(lda.class!=Direction.2005)
+```
+
+## K-Nearest Neighbors
+
+Usemos ahora la función **knn()**, parte de la librería **class**. La función requiere 4 intpus:
+
+1) Una matriz que contenga los predictores asociados al set de entrenamiento, nominado **train.X** a continuación.
+
+2) Una matriz que contenga los predictores asociados con los datos sobre los que queremos realizar predicciones, nominado **text.X**.
+
+3) Un vector que contenga las etiquetas de clase para las observaciones del set de entrenamiento, nominado **train.Direction** a continuación.
+
+4) Un valor para *K*, el número de vecinos próximos usado por el clasificador.
+
+
+Usamos **cbind()** (abreviación de *column bind*) para unir las variables **Lag1** y **Lag2* entre ellas para generar dos matrices, una para el set de entrenamiento y otra para set de testeo.
+
+```{r}
+library(class)
+train.X=cbind(Lag1,Lag2)[train,]
+test.X=cbind(Lag1,Lag2)[!train,]
+train.Direction=Direction[train]
+```
+
+
+Para garantizar la replicabilidad, asigná una *seed* con valor igual a 1.
+
+Generá una matriz de confusión para evaluar los resultados.
+
+```{r}
+set.seed(1)
+knn.pred=knn(train.X,test.X,train.Direction,k=1)
+table(knn.pred,Direction.2005)
+```
+```{r}
+(83+43)/252
+```
+
+
+Los resultados no son muy alentadores, solo el 50% de las observaciones fueron acertadas. Probemos con un valor de **K** igual a 3.
+
+```{r}
+knn.pred=knn(train.X,test.X,train.Direction,k=3)
+table(knn.pred,Direction.2005)
+mean(knn.pred==Direction.2005)
+```
+
+Mejoró un poco, de todas maneras aumentar **K** por encima de 3 no arroja mejoras significativas.
+
+
