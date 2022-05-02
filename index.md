@@ -54,7 +54,7 @@ Pueden descargarse la totalidad de los materiales del repositorio para trabajar 
 
 Pueden descargarse la totalidad de los materiales del repositorio para trabajar en un único archivo .zip
 
-[![](img/Download.png))](clase3.rar)
+[![](img/Download.png)](clase3.rar)
 
 ## Clase 4: Cross-validation
 
@@ -64,7 +64,7 @@ Pueden descargarse la totalidad de los materiales del repositorio para trabajar 
 - [P4-A Notebooks](/clase4/notebooks/P4a.Rmd)
 - [P4-B Notebooks](/clase4/notebooks/P4b.Rmd)
 
-[![](img/Download.png))](clase4.rar)
+[![](img/Download.png)](clase4.rar)
 
 
 ## Clase 5. Subset selection, Lasso y Ridge
