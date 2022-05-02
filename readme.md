@@ -2,6 +2,8 @@
 
 # Introducción al modelado de datos
 
+https://dcscyhd.github.io/modulo_3/
+
 ## Docentes
 
 - [Martín Schuster]()
