@@ -47,7 +47,7 @@ Pueden descargarse la totalidad de los materiales del repositorio para trabajar 
 
 - [Slides - pdf](/clase3/teorico3.pptx)
 - [P3-A](/clase3/notebooks/P3a.nb.html)
-- [P3-B](/clase3/notebooks/P3b.nb.html)
+- [P3-B](/clase3/notebooks/p3b.nb.html)
 - [P3-A Notebooks](/clase3/notebooks/P3a.Rmd)
 - [P3-B Notebooks](/clase3/notebooks/P3b.Rmd)
 
