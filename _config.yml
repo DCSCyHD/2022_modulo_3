@@ -2,4 +2,6 @@ title: M3-Estadística
 subtitle: Diploma en Ciencias Sociales Computacionales y Humanidades digitales - EIDAES
 description: Materiales del curso       
 show_downloads: true
-theme: jekyll-theme-midnight
+remote_theme: pages-themes/hacker@v0.2.0
+plugins:
+- jekyll-remote-theme
