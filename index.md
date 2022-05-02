@@ -53,7 +53,7 @@ Pueden descargarse la totalidad de los materiales del repositorio para trabajar 
 
 Pueden descargarse la totalidad de los materiales del repositorio para trabajar en un único archivo .zip
 
-[![](img/Download.png)](clase3.rar)
+[![](img/Download.png))](clase3.rar)
 
 ## Clase 4: Cross-validation
 
