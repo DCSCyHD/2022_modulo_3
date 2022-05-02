@@ -2,9 +2,6 @@
   <img src="img/logo-factor-data-solo.jpg"/>
 </p>
 
-![](img/logo-factor-data-solo.jpg)
-# Introducción al modelado de datos
-
 
 ## Docentes
 
