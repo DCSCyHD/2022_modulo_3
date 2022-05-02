@@ -15,11 +15,13 @@ Vamos a cargar la librería **MASS** y la librería **ISLR**. Algunas librerías
 
 
 ```{r}
-
+install.packages("ISLR")
+install.packages("MASS")
 ```
 
 ```{r}
-
+library(MASS)
+library(ISLR)
 ```
 
 La librería **MASS** contiene el set de datos **Boston**, el cual registra **medv** (median house value por sus iniciales, el valor promedio de una casa) para 506 barrios en las cercanías de Boston. Buscaremos precedir **medv** usando 13 predictores como por ejemplo **rm** (número promedio de habitaciones por casa), **age** (años promedio de antiguedad de las casas) y **lstat** (porcentaje de hogares con un estatus socioeconómico bajo).
@@ -27,43 +29,43 @@ La librería **MASS** contiene el set de datos **Boston**, el cual registra **me
 Explora con **fix()** el dataset y los nombres de las variables con **names()**
 
 ```{r}
-
+fix(Boston)
+names(Boston)
 ```
 Usá **lm()** para ajustar un modelo simple de regresión lineal, usando **medv** como la respuesta y **lstat** como el predictor. La sintáxis básica es **lm(y∼x, data)** donde **y** es la variable dependiente, **x** el predictor y **data** el set de datos donde residen las variables.
 
 ```{r}
-
+lm.fit=lm(medv∼lstat)
 ```
 
 Si te da error ingresando las variables, esto es porque debemos indicarle a *R* donde buscar las variables. Lo podemos lograr con **attach()**.
 
 ```{r}
-
+attach(Boston)
 ```
 
 Indagá **lm.fit**, usá también el modelo generado dentro de la función **summary()**
 
 ```{r}
-
+lm.fit=lm(medv∼lstat)
+summary(lm.fit)
 ```
 
-```{r}
 
-```
 Usá **names()** pasando como argumento el modelo generado para saber que otras piezas de información almacena el objeto. También accede a los coeficientes usando **coef()**.
 
 ```{r}
-
+names(lm.fit)
 ```
 
 ```{r}
-
+coef(lm.fit)
 ```
 
 Para obtener intervalos de confianza para los coeficientes estimados, podemos usar la función **confint()**
 
 ```{r}
-
+confint(lm.fit)
 ```
 
 Usá **predict()** para obtener intervalos de confianza e intervalos de predicción para la predicción de **medv** dado un valor de **lstat**.
@@ -71,15 +73,18 @@ Usá **predict()** para obtener intervalos de confianza e intervalos de predicci
 ¿Qué se observa respecto a los intervalos de confianza y de predicción para **lstat** con un valor de 10?
 
 ```{r}
-
+predict(lm.fit,data.frame(lstat=c(5,10,15,20)), interval="confidence")
 ```
+
 ```{r}
-
+predict(lm.fit,data.frame(lstat=c(5,10,15,20)), interval="prediction")
 ```
+
 Ploteá **medv** y **lstat** usando **plot()** y **abline()**.
 
 ```{r}
-
+plot(lstat,medv)
+abline(lm.fit)
 ```
 
 Hay indicios de no-linealidad entre **medv** y **lstat**, lo abordarmos más tarde en éste laboratorio.
@@ -87,51 +92,53 @@ Hay indicios de no-linealidad entre **medv** y **lstat**, lo abordarmos más tar
 Probá usando los argumentos **lwd** y **col** en **abline()** y **col** y **pch** en **plot()**.
 
 ```{r}
-
+plot(lstat,medv,col="red")
+abline(lm.fit,lwd=3,col="red")
+plot(lstat,medv,pch=20)
+abline(lm.fit,lwd=3,col="red")
+plot(lstat,medv,pch="+")
+abline(lm.fit,lwd=3,col="red")
+plot(1:20,1:20,pch=1:20)
 ```
 
 Usá **plot()** con **lm.fit()**.
 
 ```{r}
-
-```
-Usá **plot()** junto con **residuals()** y **rstudent()** para computar y plotear los residuos y los residuos Student de la regresión lineal.
-
-```{r}
-
+plot(lm.fit)
 ```
 
-```{r}
-
-```
 ## Regresión lineal múltiple
 
 Usando **lm()** calculá un modelo lineal usando las variables **lstat** + **age**. De manera que tengamos 2 predictores y una variable dependiente **medv**.
 
 ```{r}
-
+lm.fit=lm(medv ∼ lstat + age , data=Boston)
+summary(lm.fit)
 ```
 
 Ahora, generá un modelo usando todos los predictores disponibles, teniendo a **medv** como variable dependiente.
 
 ```{r}
-
+lm.fit=lm(medv∼.,data=Boston )
+summary(lm.fit)
 ```
 Usando la función **vif()** del paquete **car** podemos calcular el factor de inflación de la varianza.
 
 ```{r}
-
+install.packages("car")
+library(car)
 ```
 
 ```{r}
 
+vif(lm.fit)
 ```
 ## Términos de interacción
 
 Imprimí en la consola el resultado de pasarle a **summary()** un modelo lineal que tenga como variable dependiente a **medv** y las variables **age**, **lstat** y el término de interacción de **lstat X age** como predictores.
 
 ```{r}
-
+summary(lm(medv∼lstat *age ,data=Boston ))
 ```
 
 ## Predictores cualitativos
@@ -139,7 +146,8 @@ Imprimí en la consola el resultado de pasarle a **summary()** un modelo lineal 
 Vamos a utiliar el dataset **Carseats** de la libería **ISLR**. Intentaremos predecir **Sales** (ventas de sillas para niñas y niños) en 400 locaciones basadas en un número determinado de predictores.
 
 ```{r}
-
+fix(Carseats)
+names(Carseats)
 ```
 
 **Shelvloc** es un predictor cualitativo que hace referencia a la calidad (buena, mediana y mala) de la ubicación de un asiento de automóvil en un aparador de una tienda determinada.
@@ -149,11 +157,13 @@ Dada una variable cualitativa como **Shelvloc**, *R* genera variables ficticias 
 Vamos a realizar una regresión lineal múltiple que incluya algunos términos de interacción.
 
 ```{r}
-
+lm.fit=lm(Sales∼.+ Income :Advertising +Price :Age ,data=Carseats )
+summary(lm.fit)
 ```
 La función **contrasts()** devuelve el código de la *dummy variable* que *R* generó.
 
 ```{r}
-
+attach(Carseats)
+contrasts(ShelveLoc)
 ```
 
