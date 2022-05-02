@@ -27,7 +27,7 @@ Revisaremos conceptos fundamentales para la compresión de los modelos parte de 
 
 Pueden descargarse la totalidad de los materiales del repositorio para trabajar en un único archivo .zip
 
-[![](img/Download.png)](clase1.zip)
+[![](img/Download.png)](clase1.rar)
 
 
 ## Clase 2: Regresión lineal simple, múltiple y KNN
@@ -40,7 +40,7 @@ Pueden descargarse la totalidad de los materiales del repositorio para trabajar 
 
 Pueden descargarse la totalidad de los materiales del repositorio para trabajar en un único archivo .zip
 
-[![](img/Download.png)](clase2.zip)
+[![](img/Download.png)](clase2.rar)
 
 
 ## Clase 3: Clasificación: regresión logística, LDA, KNN
@@ -53,7 +53,7 @@ Pueden descargarse la totalidad de los materiales del repositorio para trabajar 
 
 Pueden descargarse la totalidad de los materiales del repositorio para trabajar en un único archivo .zip
 
-[![]((img/Download.png))](clase3.zip)
+[![]((img/Download.png))](clase3.rar)
 
 ## Clase 4: Cross-validation
 
@@ -63,7 +63,7 @@ Pueden descargarse la totalidad de los materiales del repositorio para trabajar 
 - [P4-A Notebooks](/clase4/notebooks/P4a.Rmd)
 - [P4-B Notebooks](/clase4/notebooks/P4b.Rmd)
 
-[![](img/Download.png))](clase4.zip)
+[![](img/Download.png))](clase4.rar)
 
 
 ## Clase 5. Subset selection, Lasso y Ridge
@@ -74,7 +74,7 @@ Pueden descargarse la totalidad de los materiales del repositorio para trabajar 
 - [P5-A Notebooks](/clase5/notebooks/P5a.Rmd)
 - [P5-B Notebooks](/clase5/notebooks/P5b.Rmd)
 
-[![](img/Download.png)](clase5.zip)
+[![](img/Download.png)](clase5.rar)
 
 
 
