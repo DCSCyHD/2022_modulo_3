@@ -1,0 +1,122 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Métodos de remuestreo
+## Práctico 4a
+Diploma Universitario en Ciencias Sociales Computacionales y Humanidades Digitales (UNSAM).
+
+Módulo 3: Introducción al modelado de datos.
+
+```{r}
+install.packages("ISLR")
+install.packages("boot")
+```
+
+
+## Abordaje mediante set de validación
+
+Exploramos el uso de sets de validación para estimar el ratio de error en el set de testeo resultantes de la implementación de varios modelos lineales en el dataset **Auto**.
+
+Para garantizar la replicabilidad, vamos a setear una **seed**.
+
+Comenzamos usando **sample()** para dividir todas las observaciones en dos mitades, seleccionando un subset de 196 observaciones aleatorias de las 392 disponibles. Nos vamos a referir a tales observaciones como "set de entrenamiento".
+
+```{r}
+library(ISLR)
+set.seed(1)
+train=sample(392,196)
+```
+
+Ahora ajustaremos una regresión lineal usando sólo las observaciones correspondientes al set de entrenamiento.
+
+```{r}
+lm.fit=lm(mpg∼horsepower,data=Auto,subset=train)
+```
+
+Ahora vamos a usar **predict()** para estimar la respuesta para las 392 observaciones y luego usamos **mean()** para calcular el error cuadrático medio (MSE) de las 196 observaciones del set de validación. Tené en cuenta que index **-train** que figura debajo provoca que seleccionemos las observaciones que no esten en el set de entrenamiento.
+
+```{r}
+attach(Auto)
+mean((mpg-predict(lm.fit,Auto))[-train]^2)
+```
+El MSE estimado para la regresión que generamos es de 23.26. Ahora podemos usar la función **poly()** para estimar el error del set de testeo para la regresión cuadrática y cúbica.
+
+
+```{r}
+lm.fit2=lm(mpg∼poly(horsepower,2),data=Auto,subset=train)
+mean((mpg-predict(lm.fit2,Auto))[-train ]^2)
+```
+```{r}
+lm.fit3=lm(mpg∼poly(horsepower,3),data=Auto,subset=train)
+mean((mpg-predict(lm.fit3,Auto))[-train]^2)
+```
+El error de testeo en este caso es 18.71 y 18.79 respectivamente. Si seleccionamos un set de entrenamiento diferente, obtendremos diferentes valores para el error sobre el set de validación.
+
+```{r}
+set.seed(3)
+train=sample(392,196)
+lm.fit=lm(mpg∼horsepower,subset=train)
+mean((mpg-predict(lm.fit,Auto))[-train]^2)
+lm.fit2=lm(mpg∼poly(horsepower,2),data=Auto,subset=train)
+mean((mpg-predict(lm.fit2,Auto))[-train]^2)
+lm.fit3=lm(mpg∼poly(horsepower,3),data=Auto,subset=train)
+mean((mpg-predict(lm.fit3,Auto))[-train ]^2)
+```
+Usando una semilla diferente conseguimos resultados que son consistentes con los hallazgos anteriores. El modelo que predice **mpg** usando una función cuadrática de **horsepower** se desempeña mejor que un modelo lineal, también constatamos que la diferencia de performance entre un modelo cuadrático y uno cúbico es mínima.
+
+## Leave-one-out Cross-Validation
+
+El método LOOCV puede ser estimado automáticamente para cualquier modelo linear generalizado usando **glm()** y **cv.glm()**. Si no le aclaramos **family=binomial** a **glm()** como hicimos en el ejercicio de regresión logística, **glm()** funciona igual que **lm()**.
+
+```{r}
+glm.fit=glm(mpg∼horsepower,data=Auto)
+coef(glm.fit)
+```
+
+```{r}
+lm.fit=lm(mpg∼horsepower,data=Auto)
+coef(lm.fit)
+```
+
+Como vemos operan de la misma manera. Vamos a usar **glm()** y **cv.glm()** (parte de la librería **boot**).
+
+```{r}
+library(boot)
+glm.fit=glm(mpg∼horsepower,data=Auto)
+cv.err=cv.glm(Auto,glm.fit)
+cv.err$delta
+```
+
+Los dos valores dentro del vector **delta** contienen los resultados de la *cross-validation*. En este caso los valores son casi idénticos. Debajo revisaremos un ejempo donde los valores de *cross-validation* difieren. El estimado para nuestra *cross-validation* sobre el set de testeo es aproximadamente 24.23.
+
+Podemos repetir este procedimiento para ajustes polinomiales complejos. Para automatizar el proceso usaremos **for()** para iterar sobre ajustes de regresiones polinomiales de orden *i=1* a *i=5*, computar los errores usando *cross-validation* y generar el vector **cv.error**.
+
+```{r}
+cv.error=rep(0,5)
+for (i in 1:5){
+glm.fit=glm(mpg∼poly(horsepower,i),data=Auto)
+cv.error[i]=cv.glm(Auto,glm.fit)$delta[1]
+}
+cv.error
+```
+Constatamos una fuerte caída en el MSE entre el modelo lineal y cuadrático, pero no vemos mejoras significativas usando los modelos polinomiales.
+
+## k-Fold Cross-Validation
+
+Ahora usaremos **cv.glm()** para implementar *cross-validation* de tipo *k-fold*. Vamos usar k=10 en el set de datos **Auto**.
+
+```{r}
+set.seed(17)
+cv.error.10=rep(0,10)
+for (i in 1:10){
+glm.fit=glm(mpg∼poly(horsepower,i),data=Auto)
+cv.error.10[i]=cv.glm(Auto,glm.fit,K=10)$delta[1]
+}
+cv.error.10
+```
+
+El proceso es mucho menos costoso en términos de los tiempos de cómputo en comparación con **LOOCV**. Aún observamos que la regresión cúbica o polinómica no presentan una mejora significativa comparándola con la función cuadrática.
+
+Los números asociados con **delta** en este caso son diferentes, el primero resonde a un *k-fold* estándar, el segundo es una versión corregida según el bias o sesgo. Ambos valores son similares.

@@ -1,0 +1,101 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Clasificación
+## Práctico 3b
+Diploma Universitario en Ciencias Sociales Computacionales y Humanidades Digitales (UNSAM).
+
+Módulo 3: Introducción al modelado de datos.
+
+1) Supongamos que tenemos un set de datos que contiene datos sobre estudiantes de una clase de estadística con las variables:
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>X</mi>
+    <mn>1</mn>
+  </msub>
+  <mo>=</mo>
+</math> = horas de estudio
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mi>X</mi>
+    <mn>2</mn>
+  </msub>
+  <mo>=</mo>
+</math> = promedio de la carrera
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>Y</mi>
+  <mo>=</mo>
+</math> = recibe una **A**
+
+Y los siguientes coeficientes de regresión:
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mover>
+        <mi>&#x03B2;<!-- β --></mi>
+        <mo stretchy="false">&#x005E;<!-- ^ --></mo>
+      </mover>
+    </mrow>
+    <mn>0</mn>
+  </msub>
+  <mo>=</mo>
+  <mo>&#x2212;<!-- − --></mo>
+  <mn>6</mn>
+</math>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mover>
+        <mi>&#x03B2;<!-- β --></mi>
+        <mo stretchy="false">&#x005E;<!-- ^ --></mo>
+      </mover>
+    </mrow>
+    <mn>1</mn>
+  </msub>
+  <mo>=</mo>
+  <mn>0.05</mn>
+</math>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mrow class="MJX-TeXAtom-ORD">
+      <mover>
+        <mi>&#x03B2;<!-- β --></mi>
+        <mo stretchy="false">&#x005E;<!-- ^ --></mo>
+      </mover>
+    </mrow>
+    <mn>2</mn>
+  </msub>
+  <mo>=</mo>
+  <mn>1</mn>
+</math>
+
+a) Estimá la probabilidad que tiene un estudiante que estudia 40hs y tiene un promedio de 3.5 de recibir una **A** de calificación.
+
+b) ¿Cuantas horas debe estudiar el caso observado en el punto a) para tener 50% de posibilidad de recibir una **A**?
+
+2) El presente problema está relacionado con las **chances**.
+
+a) ¿En promedio, qué fracción de personas con chances de 0.37 de presentar una mora en el pago de su tarjeta de crédito efectivamente van a dejar de pagar la tarjeta de crédito?
+
+b) Supongamos que una persona tiene 16% de chances de entrar en mora en el pago de su tarjeta de crédito ¿Cuáles son las chances de efectivamente entrar en mora?
+
+3) Vamos a trabajar con el dataset *Weekly*, el cual contiene los retornos semanales en términos porcentuales del índice S&P 500 por un periodo de 21 años, desde 1990 hasta el final de 2010. 
+Antes que nada, vamos a instalar el paquete **ISLR** el cual contiene el dataset.
+
+```{r}
+
+```
+
+a) Realizá un análisis exploratorio sobre los datos, tanto numérico como gráfico. ¿Es posible ver algún patrón o relación?
+
+b) Usá el dataset completo para realizar una regresión logística con **'Direction'** como la variable dependiente y las cinco variables **lag** más la variable **'Volume'** como predictores. Utilizá la función **summary** para imprimir los resultados. ¿Alguno de los predictores elegidos aparentan ser estadísticamente significativos? De ser afirmativa la respuesta, ¿cuáles son?
+
+c) Computá la matriz de confusión y la proporción general de predicciones correctas. Explicá qué nos puede decir la matriz de confusión sobre los tipos de errores generados por la regresión logística.

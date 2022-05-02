@@ -1,0 +1,94 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Aprendizaje estadístico
+## Práctico 1b
+
+1. Para cada escenario planteado, explique si el problema es de clasificación o regresión. También indique si el interés primordial es inferir o predecir. Finalmente, provea *n* y *p*.
+
+Nota:
+
+*n* = Observaciones
+*p* = Variables
+
+a) Generamos un set de datos de las primeras 500 firmas en los Estados Unidos. Para cada firma, registramos la ganancia, el número de empleados, la industria a la que pertenece y el salario que percibe el CEO. Nos interesa saber qué factores afectan el salario de los CEO.
+
+
+
+b) Estamos considerando lanzar un nuevo producto que deseamos saber si será un *éxito* o un *fracaso*. Recolectamos datos sobre 20 productos similares que fueron lanzados con anterioridad. Para cada producto tenemos registrado si fué un *éxito* o un *fracaso*, el precio que se cobra por su compra, el presupuesto de marketing, el precio de competición y otras 10 variables.
+
+
+
+c) Estamos interesados en predecir la variación porcentual en la tasa de cambio del USD/Euro en relación a los cambios semanales en las acciones de los mercados mundiales. Para esto, recopilamos datos semanales de todo el año 2012. Para cada semana registramos la variación porcentual en la relación USD/Euro, la variación porcentual en el mercado norteamericano, la variación porcentual en los mercados británicos, y la variación porcentual en el mercado alemán.
+
+
+
+
+2. El presente ejercicio involucra el uso del dataset **Auto** provisto para la parte práctica. Asegurá que los valores perdidos han sido removidos de la matriz de datos.
+
+a) ¿Cuál de los predictores son cuantitativos y cuales son cualitativos?
+
+```{r}
+
+```
+
+
+b) ¿Cuál es el *rango* para cada predictor cuantitativo? Lo podés averiguar usando la función **range()**
+
+```{r}
+
+```
+
+
+c) ¿Cuál es el promedio y la desviación estándar de cada predictor cuantitativo?
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+d) Removamos el rango de observación desde la número 10 a la número 85. ¿Cuál es el rango, el promedio y la desviación estándar para cada predictor del subset de datos que acabamos de generar?
+
+```{r}
+
+```
+```{r}
+
+```
+```{r}
+
+```
+
+e) Usando todo el set de datos, investigá los predictores usando herramientas gráficos como **scatterplots** u otras herramientas que consideres pertinentes. Creá algunos plots destacando relaciones entre los predictores. Comentá tus hallazgos.
+
+```{r}
+
+```
+```{r}
+
+```
+
+
+
+
+f) Supongamos que deseamos predecir el rendimiento del combustible por milla **(mpg)** basándonos en otras variables. ¿Algunos de tus plots sugieren que las variables disponibles pueden servir para predecir **mpg**? Justificá tu respuesta.
+
+
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+

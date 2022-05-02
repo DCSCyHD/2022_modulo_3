@@ -1,0 +1,311 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Aprendizaje estadístico
+## Práctico 1a
+Diploma Universitario en Ciencias Sociales Computacionales y Humanidades Digitales (UNSAM).
+
+Módulo 3: Introducción al modelado de datos.
+
+## Introducción a R - Comandos básicos
+
+En *R* usamos *funciones* para realizar operaciones. Por ejemplo, para ejecutar una función llamada **funcname**, tipeamos **funcname(input1, intput2)**, donde *input* (también llamados *argumentos*) le dirá a *R* cómo ejecutar la función.
+
+Veamos un ejemplo. Para crear un vector de números, usamos la función **c()** (la 'c' es por *concatenar*). Cualquier número dentro de estos paréntesis son agrupados conjuntamente. 
+
+A continuación agrupá los números 1, 3, 2 y 5 y guardalos como un *vector* llamado **x**.
+
+```{r}
+x <- c(1,3,2,5)
+```
+
+Corroborá en la próxima celda que la variable 'x' se asignó correctamente.
+
+```{r}
+x
+```
+
+A continuación, creá la variable 'y' concatenando los valores 1, 4 y 3. Luego, reasigná la variable 'x' y concatená los valores 1, 6 y 2.
+
+```{r}
+y = c(1,4,3)
+x = c(1,6,2)
+```
+
+Ahora, usemos la función **length()** para verificar la longitud de los vectores 'x' e 'y'. Ambos deberían tener la misma longitud. 
+
+```{r}
+length(x)
+length(y)
+```
+
+Habiendo corroborado que los vectores tienen la misma longitud, vamos a sumarlos. Sumar los vectores hará que se sume el primer número de 'x' con el primer numero de 'y' y así sucesivamente.
+
+```{r}
+x+y
+```
+
+La función **ls()** nos permite ver una lista de todos los objetos (como por ejemplo datos y funciones) que hemos guardado hasta el momento. La función **rm()** elimina los objetos que le indiquemos.
+
+A continuación, listemos los objetos usando **ls()**.
+
+```{r}
+ls()
+```
+
+Usando **rm()** borremos el vector 'x' y el vector 'y'.
+
+```{r}
+rm(x,y)
+```
+
+Corroboremos, usando **ls()**, que los objetos han sido borrados.
+
+```{r}
+ls()
+```
+
+Podemos tambien borrar todos los objetos en un solo comando usando **rm(list=ls())**
+
+La función **matrix()** puede ser utilizada para crear una matriz de números.
+
+A continuación, generemos una matriz de números (1, 2, 3, 4) de dos (2) filas y dos (2) columnas. La misma la asignamos a la variable 'x'.
+
+Si tenés dudas sobre como utilizar una función o qué argumentos acepta, recordá que anteponiendo un signo de interrogación podés acceder a la ayuda que brinda *R* sobre la función requerida. Por ejemplo, para acceder a la ayuda sobre la función **matrix()** ingresamos **'?matrix'**. Probá ejecutando la celda aquí debajo:
+
+```{r}
+?matrix()
+```
+
+Ahora que sabemos como funciona matrix(), generemos la matriz.
+
+```{r}
+x = matrix(data=c(1,2,3,4), nrow=2, ncol=2)
+x
+```
+
+Por defecto, la matriz que generamos usando **matrix()** se crea completando los valores por columnas, de manera alternativa podemos generar una matriz que complete valores por fila adicionando el parámetro **byrow=TRUE**.
+
+Creemos ahora la misma matriz, con los mismos valores, pero ordenando el llenado de los datos por fila.
+
+```{r}
+x = matrix(data=c(1,2,3,4), nrow=2, ncol=2, byrow=TRUE)
+x
+```
+
+¡Bien! Ahora vamos a utilizar la función **sqrt()**. La función se llama así dada la abreviación de su nombre en inglés (square root). Tal función sirve para calcular la raíz cuadrada de los parámetros que le suministremos.
+
+Vamos a usar **sqrt()** con nuestra martriz de datos generada en la celda anterior.
+
+```{r}
+sqrt(x)
+```
+
+Ahora vamos a usar la función **^2** para elevar al cuadrado a nuestra matriz, en realidad cualquier tipo de potencia está permitida, tanto fracciones como potencias negativas, en este caso solo queremos elevar al cuadrado. 
+
+Elevemos al cuadrado nuestra matriz 'x'
+
+```{r}
+x^2
+```
+
+Ahora, vamos a utilizar la función **rnorm()**. Tal como se desprende de la documentación, **rnorm()** genera un vector de datos aleatorios sacados de una distribución normal, con el parámetro **n** especificamos el tamaño del vector que queremos generar. Cada vez que generemos un vector con **rnorm()** los valores cambiaran, ya que se generan de manera aleatorio
+
+Por otro lado tenemos disponible la función **cor()** que computa la correlación entre dos variables.
+
+A continuación vamos a crear un vector asignado a la variable 'x' usando **rnorm()** especificando una longitud de 50 elementos.
+
+```{r}
+x = rnorm(50)
+x
+```
+
+Por defecto, **rnorm()** crea variables aleatorias de una distribución normal con una media de 0 y una desviación estándar de 1. Sin embargo, podemos modificar estos valores utilizando los argumentos **mean** y **sd** respectivamente. Por otro lado, anteriormente mencionamos que al ser datos generados de manera aleatoria, cada vez que ejecutemos **rnorm()** los datos van a variar, por lo que si queremos replicar este ejercicio con los mismos valores, nos vamos a ver en problemas. Para resolver esto, podemos usar un parámetro que nos permita replicar exactamente los mismos valores aleatorios para poder replicar los ejercicios. Este parámetro se llama **set.seed()**, tal como lo indica su nombre en inglés, se establece un valor numérico llamado 'semilla' que permite la replicabilidad de los resultados.
+
+A continuación, vamos a establecer la semilla en 1303. Luego, generemos nuevamente un vector 'x' que contenga 50 elementos. Por otro lado, también generemos un vector 'y', cuyo valor sea el vector 'x' adicionando **rnorm()** con una media de valor 50 y una desviación estandar de 0.1.
+
+```{r}
+set.seed(1303)
+x = rnorm(50)
+y = x+rnorm(50,mean=50,sd=0.1)
+```
+
+Vamos ahora a calcular la correlación, usando **cor()** entre 'x' e 'y'.
+
+```{r}
+cor(x,y)
+```
+
+Por último, vamos a utilizar las funciones **var()**, **mean()** y **sd()** para calcular la varianza, la media y la desviación estandar respectivamente.
+
+Para el vector 'y', calculá la varianza, la media, la raíz cuadrada de la varianza y (para hacer más simple esto último) la desviación estándar de 'y'.
+
+```{r}
+mean(y)
+var(y)
+sqrt(var(y))
+sd(y)
+```
+
+## Gráficos
+
+La función **plot()** es la forma principal de plotear datos en *R*.
+
+A continuación, vamos a generar dos vectores 'x' e 'y', usando **rnorm()** con una longitud de 100 elementos cada uno, con los parámetros por defecto de **rnorm()**. Ingresemos aparte la leyenda "Este es el eje X" en el vector 'x' y "Este es el eje Y" en el vector 'y'. También agreguemos título al gráfico como "Ploteo de X contra Y". Recordá que podés usar **?plot** para conocer cómo opera la función.
+
+```{r}
+x = rnorm(100)
+y = rnorm(100)
+plot(x,y,xlab="Este es el eje X",ylab="Este es el eje Y",main="Ploteo de X contra Y")
+```
+
+La función **seq()** nos permite crear un vector que contiene una secuencia de números específica. Por ejemplo **seq(a, b)** crea un vector con los números entre **a** y **b**.
+Si ingresamos **seq(0,1,length=10)** creamos una secuencia de **10** números que están separados equitativamente entre **0** y **1**. Escribir **3:11** es un atajo para escribir **seq(3,11)**.
+
+```{r}
+x=seq(1,10)
+x
+```
+```{r}
+x = 1:10
+x
+```
+
+## Indexando datos
+
+Supongamos que tenemos la siguiente matriz.
+
+```{r}
+A=matrix(1:16,4,4)
+A
+```
+
+Si tipeamos **A[2,3]** vamos a acceder el elemento que reside en la segunda fila y la tercera columna.
+
+```{r}
+A[2,3]
+```
+
+El primer número luego del bracket **[** refiere a la fila y el segundo número a la columna.
+Para seleccionar varios valores al mismo tiempo, podemos proveer vectores como índices.
+
+Seleccioná de la matriz **A**:
+
+1) Los elementos de la fila 1 y 3 y la columna 2 y 4
+2) Los elementos de la fila 1 a la 3 y de la fila 2 a la 4
+3) Los elementos de la fila 1 a la 2 y todas las columnas
+4) Todas las filas de las columnas 1 y 2
+
+```{r}
+A[c(1,3),c(2,4)]
+A[1:3,2:4]
+A[1:2,]
+A[,1:2]
+```
+5) Todas las filas, menos la 1 y la 3 y todas las columnas
+6) Todas las filas menos la 1 y la 3 y todas las columnas menos la 1, 3 y 4
+
+```{r}
+A[-c(1,3),]
+A[-c(1,3),-c(1,3,4)]
+```
+Con la función **dim()** devuelve la cantidad de filas seguida de la cantidad de columnas. A continuación utilizá **dim()** con la matriz **A**.
+
+```{r}
+dim(A)
+```
+
+## Cargando datos
+
+Vamos a cargar el dataset que adjuntamos con este notebook, llamado "Auto.data". Si lo abren, verán que es un archivo de texto plano, vamos a abrir el archivo usando **read.table()** pasandole los parámetros de **header** igual a **TRUE** y **na.strings** igual a **"?"**, lo que le va a indicar que a cada caracter particular (en este caso un signo de pregunta) lo trate como un valor perdido en la matriz de datos.
+
+**fix()** se utiliza para visualizar la planilla como si fuera una panilla de cálculos de excel.
+
+
+```{r}
+Auto = read.table("../data/Auto.data", header=T, na.strings="?")
+fix(Auto)
+```
+
+Ahora veamos las dimensiones de 'Auto'.
+
+```{r}
+dim(Auto)
+```
+Usando la función **na.omit()** vamos a eliminar las observaciones que contienen valores perdidos, en este caso solo 5 observaciones contienen casos perdidos, por lo que nos deberíamos quedar con 392 observaciones.
+
+```{r}
+Auto=na.omit(Auto)
+dim(Auto)
+```
+Chequeamos usando **names()** los nombres de las variables.
+
+```{r}
+names(Auto)
+```
+
+## Resúmenes gráficos y numéricos adicionales
+
+A continuación generemos un scatterplot usando **plot()** pasando la variable **Cylinders** como variable independiente y **Mpg** como variable dependiente.
+Usando **attach()** le indicamos a *R* que cree una variable por cada variable del set de datos.
+
+```{r}
+attach(Auto)
+```
+
+
+
+
+```{r}
+plot(cylinders, mpg)
+```
+
+Transformemos la variable **cylinders** en una variable cualitativa. Luego, generemos un **plot()**, pasando nuevamente las variables **mpg** y **cylinder** que ahora es una variable cualitativa.
+Probemos diferentes parámetros para revisar qué gráficos obtenemos como resultado (recordá utilizar la ayuda **?plot**).
+
+
+```{r}
+cylinders=as.factor(cylinders)
+```
+
+
+```{r}
+plot(cylinders, mpg)
+plot(cylinders, mpg, col="red")
+plot(cylinders, mpg, col="red", varwidth=T)
+plot(cylinders, mpg, col="red", varwidth=T,horizontal=T)
+plot(cylinders, mpg, col="red", varwidth=TRUE, xlab="cylinders", ylab ="MPG ")
+```
+Como vemos, al tener una variable cualitativa y una cuantitativa, **plot()** automáticamente genera **boxplots** por defecto.
+
+Probemos ahora la función **hist()** para generar un histograma usando la matriz **Auto**. También probemos modificando diferentes parámetros.
+
+```{r}
+hist(mpg)
+hist(mpg,col=2)
+hist(mpg,col=2,breaks=15)
+```
+
+Generemos ahora un gráfico usando **pairs()**, la cual crea una matriz de **scatterplots**. Usaremos un subconjunto de datos de la matriz principal, vamos a quedarnos solo con **mpg**, **displacement**, **horsepower**, **weight**, **acceleration**.
+
+```{r}
+pairs(∼ mpg + displacement + horsepower + weight +
+acceleration , Auto)
+```
+```{r}
+plot(horsepower,mpg)
+identify(horsepower,mpg,name)
+```
+
+Finalizamos usando la función **summary()** para tener un resumen de todos los datos que tenemos en la matriz de datos. También le podemos pasar variables para indagar sobre información puntual.
+
+```{r}
+summary(Auto)
+```
+
+```{r}
+summary(mpg)
+```
+
