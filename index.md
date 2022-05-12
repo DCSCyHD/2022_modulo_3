@@ -64,6 +64,8 @@ Pueden descargarse la totalidad de los materiales del repositorio para trabajar 
 - [P4-A Notebooks](/clase4/notebooks/P4a.Rmd)
 - [P4-B Notebooks](/clase4/notebooks/P4b.Rmd)
 
+Pueden descargarse la totalidad de los materiales del repositorio para trabajar en un único archivo .zip
+
 [![](img/Download.png)](clase4.rar)
 
 
@@ -74,6 +76,8 @@ Pueden descargarse la totalidad de los materiales del repositorio para trabajar 
 - [P5-B](/clase5/notebooks/P5b.nb.html)
 - [P5-A Notebooks](/clase5/notebooks/P5a.Rmd)
 - [P5-B Notebooks](/clase5/notebooks/P5b.Rmd)
+
+Pueden descargarse la totalidad de los materiales del repositorio para trabajar en un único archivo .zip
 
 [![](img/Download.png)](clase5.rar)
 
