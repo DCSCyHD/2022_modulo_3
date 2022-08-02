@@ -20,66 +20,38 @@ Revisaremos conceptos fundamentales para la compresión de los modelos parte de 
 # Contenidos y materiales
 ## Clase 1: Intro, tipos de modelos, trade-offs
 
-- [Slides - pdf](/clase1/teorico1.pptx)
 - [P1-A](/clase1/notebooks/P1a.nb.html)
 - [P1-B](/clase1/notebooks/P1b.nb.html)
 - [P1-A Notebooks](/clase1/notebooks/P1a.Rmd)
 - [P1-B Notebooks](/clase1/notebooks/P1b.Rmd)
-
-Pueden descargarse la totalidad de los materiales del repositorio para trabajar en un único archivo .zip
-
-[![](img/Download.png)](clase1.rar)
-
-
+- 
 ## Clase 2: Regresión lineal simple, múltiple y KNN
 
-- [Slides - pdf](/clase2/teorico2.pptx)
 - [P2-A](/clase2/notebooks/P2a.nb.html)
 - [P2-B](/clase2/notebooks/P2b.nb.html)
 - [P2-A Notebooks](/clase2/notebooks/P2a.Rmd)
 - [P2-B Notebooks](/clase2/notebooks/P2b.Rmd)
 
-Pueden descargarse la totalidad de los materiales del repositorio para trabajar en un único archivo .zip
-
-[![](img/Download.png)](clase2.rar)
-
-
 ## Clase 3: Clasificación: regresión logística, LDA, KNN
 
-- [Slides - pdf](/clase3/teorico3.pptx)
 - [P3-A](/clase3/notebooks/P3a.nb.html)
 - [P3-B](/clase3/notebooks/p3b.nb.html)
 - [P3-A Notebooks](/clase3/notebooks/P3a.Rmd)
 - [P3-B Notebooks](/clase3/notebooks/p3b.Rmd)
 
-Pueden descargarse la totalidad de los materiales del repositorio para trabajar en un único archivo .zip
-
-[![](img/Download.png)](clase3.rar)
-
 ## Clase 4: Cross-validation
 
-- [Slides - pdf](/clase4/teorico4.pptx)
 - [P4-A](/clase4/notebooks/P4a.nb.html)
 - [P4-B](/clase4/notebooks/P4b.nb.html)
 - [P4-A Notebooks](/clase4/notebooks/P4a.Rmd)
 - [P4-B Notebooks](/clase4/notebooks/P4b.Rmd)
 
-Pueden descargarse la totalidad de los materiales del repositorio para trabajar en un único archivo .zip
-
-[![](img/Download.png)](clase4.rar)
-
-
 ## Clase 5. Subset selection, Lasso y Ridge
 
-- [Slides - pdf](/clase5/teorico5.pptx)
 - [P5-A](/clase5/notebooks/P5a.nb.html)
 - [P5-B](/clase5/notebooks/P5b.nb.html)
 - [P5-A Notebooks](/clase5/notebooks/P5a.Rmd)
 - [P5-B Notebooks](/clase5/notebooks/P5b.Rmd)
-
-Pueden descargarse la totalidad de los materiales del repositorio para trabajar en un único archivo .zip
-
-[![](img/Download.png)](clase5.rar)
 
 
 
