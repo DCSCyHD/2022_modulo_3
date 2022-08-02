@@ -24,6 +24,7 @@ Revisaremos conceptos fundamentales para la compresión de los modelos parte de 
 - [P1-B](/clase1/notebooks/P1b.nb.html)
 - [P1-A Notebooks](/clase1/notebooks/P1a.Rmd)
 - [P1-B Notebooks](/clase1/notebooks/P1b.Rmd)
+- [Auto.data](/clase1/data/Auto.data)
 
 ## Clase 2: Regresión lineal simple, múltiple y KNN
 
