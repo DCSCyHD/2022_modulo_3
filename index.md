@@ -26,12 +26,16 @@ Revisaremos conceptos fundamentales para la compresión de los modelos parte de 
 - [P1-B Notebooks](/clase1/notebooks/P1b.Rmd)
 - [Auto.data](/clase1/data/Auto.data)
 
+- [Clase 1](/clase1.rar)
+
 ## Clase 2: Regresión lineal simple, múltiple y KNN
 
 - [P2-A](/clase2/notebooks/P2a.nb.html)
 - [P2-B](/clase2/notebooks/P2b.nb.html)
 - [P2-A Notebooks](/clase2/notebooks/P2a.Rmd)
 - [P2-B Notebooks](/clase2/notebooks/P2b.Rmd)
+
+- [Clase 2](/clase2.rar)
 
 ## Clase 3: Clasificación: regresión logística, LDA, KNN
 
@@ -40,12 +44,16 @@ Revisaremos conceptos fundamentales para la compresión de los modelos parte de 
 - [P3-A Notebooks](/clase3/notebooks/P3a.Rmd)
 - [P3-B Notebooks](/clase3/notebooks/p3b.Rmd)
 
+- [Clase 3](/clase3.rar)
+
 ## Clase 4: Cross-validation
 
 - [P4-A](/clase4/notebooks/P4a.nb.html)
 - [P4-B](/clase4/notebooks/P4b.nb.html)
 - [P4-A Notebooks](/clase4/notebooks/P4a.Rmd)
 - [P4-B Notebooks](/clase4/notebooks/P4b.Rmd)
+
+- [Clase 4](/clase4.rar)
 
 ## Clase 5. Subset selection, Lasso y Ridge
 
@@ -54,7 +62,11 @@ Revisaremos conceptos fundamentales para la compresión de los modelos parte de 
 - [P5-A Notebooks](/clase5/notebooks/P5a.Rmd)
 - [P5-B Notebooks](/clase5/notebooks/P5b.Rmd)
 
+- [Clase 5](/clase5.rar)
 
+## Clase 6. Intro polinomiales
+
+- [Clase 6](/clase5.rar)
 
 
 # Bibliografía y sitios de consulta
