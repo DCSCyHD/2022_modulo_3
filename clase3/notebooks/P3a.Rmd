@@ -49,7 +49,7 @@ plot(Volume)
 Ajustemos un modelo de regresión logística buscando predecir **Direction** usando **Lag1** hasta **Lag5** y **Volume**. La función **glm()** ajusta *modelos lineales generalizados* por lo que debemos especificar **family=binomial** para indicarle a *R* que deseamos generar una regresión logística.
 
 ```{r}
-glm.fits=glm(Direction∼Lag1+Lag2+Lag3+Lag4+Lag5+Volume,data=Smarket,family=binomial)
+glm.fits=glm(Direction~Lag1+Lag2+Lag3+Lag4+Lag5+Volume,data=Smarket,family=binomial)
 summary(glm.fits)
 ```
 Bajo P-value de Lag1. El coeficiente negativo de Lag 1 sugiere que si el mercado tuvo un retorno positivo el día anterior, entonces es menos probable que el mercado se sea alcista el día presente (variable **Today**).
@@ -112,7 +112,7 @@ El comando **Smarket[!train,]** seleccionará solo el subset de datos correspond
 Ahora vamos a modelizar una regresión logística usando el subset de datos que corresponden a los datos previos a 2005, usando el argumento **subset**.
 
 ```{r}
-glm.fits=glm(Direction∼Lag1+Lag2+Lag3+Lag4+Lag5+Volume,data=Smarket,family=binomial,subset=train)
+glm.fits=glm(Direction~Lag1+Lag2+Lag3+Lag4+Lag5+Volume,data=Smarket,family=binomial,subset=train)
 ```
 
 ```{r}
@@ -133,7 +133,7 @@ Recordemos que en el modelo de regresión logística tenia **p-values** poco rel
 Usemos **Lag1** y **Lag2**, variables que parecen tener el poder predictivo más alto según el modelo que generamos inicialmente.
 
 ```{r}
-glm.fits=glm(Direction∼Lag1+Lag2,data=Smarket,family =binomial,subset=train)
+glm.fits=glm(Direction~Lag1+Lag2,data=Smarket,family =binomial,subset=train)
 glm.probs=predict(glm.fits,Smarket.2005,type="response")
 glm.pred=rep("Down",252)
 glm.pred[glm.probs >.5]="Up"
@@ -150,13 +150,13 @@ predict(glm.fits,newdata=data.frame(Lag1=c(1.2,1.5),Lag2=c(1.1,-0.8)),type ="res
 ```
 
 
-## LDA (Linear Discriminan Analysis)
+## LDA (Linear Discriminant Analysis)
 
 Ajustemos un modelo LDA usando la libreria **MASS**. La función se llama **lda()**. Entrenemos el modelo, como en el caso anterior, con el set de datos de entrenamiento (observaciones previo a 2005).
 
 ```{r}
 library(MASS)
-lda.fit=lda(Direction∼Lag1+Lag2,data=Smarket,subset=train)
+lda.fit=lda(Direction~Lag1+Lag2,data=Smarket,subset=train)
 lda.fit
 ```
 
@@ -181,7 +181,7 @@ Usemos ahora la función **knn()**, parte de la librería **class**. La función
 
 1) Una matriz que contenga los predictores asociados al set de entrenamiento, nominado **train.X** a continuación.
 
-2) Una matriz que contenga los predictores asociados con los datos sobre los que queremos realizar predicciones, nominado **text.X**.
+2) Una matriz que contenga los predictores asociados con los datos sobre los que queremos realizar predicciones, nominado **test.X**.
 
 3) Un vector que contenga las etiquetas de clase para las observaciones del set de entrenamiento, nominado **train.Direction** a continuación.
 
