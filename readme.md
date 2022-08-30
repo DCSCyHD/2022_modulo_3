@@ -58,26 +58,12 @@ Pueden descargarse la totalidad de los materiales del repositorio para trabajar 
 
 [![](imgs/Download.png)](clase3.zip)
 
-## Clase 4: Cross-validation
+## Clase 4: Clase de revisión | Regresión lineal
 
-- [Slides - pdf](/clase4/teorico4.pptx)
-- [P4-A](/clase4/notebooks/P4a.nb.html)
-- [P4-B](/clase4/notebooks/P4b.nb.html)
-- [P4-A Notebooks](/clase4/notebooks/P4a.Rmd)
-- [P4-B Notebooks](/clase4/notebooks/P4b.Rmd)
-
-[![](imgs/Download.png)](clase4.rar)
+[![](imgs/Download.png)](clase3_bkp.zip)
 
 
-## Clase 5. Subset selection, Lasso y Ridge
 
-- [Slides - pdf](/clase5/teorico5.pptx)
-- [P5-A](/clase5/notebooks/P5a.nb.html)
-- [P5-B](/clase5/notebooks/P5b.nb.html)
-- [P5-A Notebooks](/clase5/notebooks/P5a.Rmd)
-- [P5-B Notebooks](/clase5/notebooks/P5b.Rmd)
-
-[![](imgs/Download.png)](clase5.rar)
 
 
 
