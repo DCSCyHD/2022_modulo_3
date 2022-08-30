@@ -5,7 +5,7 @@
 
 ## Docentes
 
-- [Martín Schuster]()
+- [Tomás Bustos]()
 - [Tomás Maguire]()
 
 # Presentación
