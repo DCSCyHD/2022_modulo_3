@@ -48,7 +48,7 @@ Revisaremos conceptos fundamentales para la compresión de los modelos parte de 
 
 ## Clase 4: Clase de revisión | Regresión lineal
 
-[![](imgs/Download.png)](clase3_bkp.zip)
+ - [Clase 4](/clase3_bkp.zip)
 
 
 # Bibliografía y sitios de consulta
