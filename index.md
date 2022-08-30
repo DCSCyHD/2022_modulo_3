@@ -5,7 +5,7 @@
 
 ## Docentes
 
-- [Martín Schuster]()
+- [Tomás Bustos]()
 - [Tomás Maguire]()
 
 # Presentación
@@ -46,27 +46,9 @@ Revisaremos conceptos fundamentales para la compresión de los modelos parte de 
 
 - [Clase 3](/clase3.rar)
 
-## Clase 4: Cross-validation
+## Clase 4: Clase de revisión | Regresión lineal
 
-- [P4-A](/clase4/notebooks/P4a.nb.html)
-- [P4-B](/clase4/notebooks/P4b.nb.html)
-- [P4-A Notebooks](/clase4/notebooks/P4a.Rmd)
-- [P4-B Notebooks](/clase4/notebooks/P4b.Rmd)
-
-- [Clase 4](/clase4.rar)
-
-## Clase 5. Subset selection, Lasso y Ridge
-
-- [P5-A](/clase5/notebooks/P5a.nb.html)
-- [P5-B](/clase5/notebooks/P5b.nb.html)
-- [P5-A Notebooks](/clase5/notebooks/P5a.Rmd)
-- [P5-B Notebooks](/clase5/notebooks/P5b.Rmd)
-
-- [Clase 5](/clase5.rar)
-
-## Clase 6. Intro polinomiales
-
-- [Clase 6](/clase5.rar)
+ - [Clase 4](/clase4_bkp.zip)
 
 
 # Bibliografía y sitios de consulta
