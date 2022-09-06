@@ -50,6 +50,9 @@ Revisaremos conceptos fundamentales para la compresión de los modelos parte de 
 
  - [Clase 4](/clase4_bkp.zip)
 
+## Clase 5: Clase de revisión | Regresión logística
+
+ - [Clase 5](/clase5_bkp.zip)
 
 # Bibliografía y sitios de consulta
 
