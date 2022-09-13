@@ -54,6 +54,10 @@ Revisaremos conceptos fundamentales para la compresión de los modelos parte de 
 
  - [Clase 5](/clase5_bkp.zip)
 
+## Clase 6: Clase de CrossValidation y KNN
+
+ - [Clase 6](/clase6.zip)
+
 # Bibliografía y sitios de consulta
 
 - Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. An Introduction to Statistical Learning : with Applications in R. New York :Springer, 2021. https://hastie.su.domains/ISLR2/ISLRv2_website.pdf
