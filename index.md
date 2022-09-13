@@ -54,7 +54,7 @@ Revisaremos conceptos fundamentales para la compresión de los modelos parte de 
 
  - [Clase 5](/clase5_bkp.zip)
 
-## Clase 6: Clase de CrossValidation y KNN
+## Clase 6: CrossValidation y KNN
 
  - [Clase 6](/clase6.zip)
 
